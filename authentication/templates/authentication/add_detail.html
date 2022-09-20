@@ -1,0 +1,64 @@
+
+
+{% block content %}
+<form method="POST"  action="/add_detail">
+        {% csrf_token %}
+    <div class="container">
+<br>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <h3>Enter Details</h3>
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Author Name:</label>
+    <div class="col-sm-4">
+      {{ form.author }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label"> caption:</label>
+    <div class="col-sm-4">
+      {{ form.caption }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label"> Image:</label>
+    <div class="col-sm-4">
+      {{ form.image }}
+    </div>
+  </div>
+        <div class="form-group row">
+    <label class="col-sm-2 col-form-label">likee:</label>
+    <div class="col-sm-4">
+      {{ form.hot }}
+    </div>
+  </div>
+        <div class="form-group row">
+    <label class="col-sm-2 col-form-label">dislikee:</label>
+    <div class="col-sm-4">
+      {{ form.n_not }}
+    </div>
+  </div>
+        <div class="form-group row">
+    <label class="col-sm-2 col-form-label">follow:</label>
+    <div class="col-sm-4">
+      {{ form.follower }}
+    </div>
+  </div>
+        <div class="form-group row">
+    <label class="col-sm-2 col-form-label">unfollow:</label>
+    <div class="col-sm-4">
+      {{ form.unfollower }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+    </div>
+</form>
+{% endblock content %}

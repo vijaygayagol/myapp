@@ -1,0 +1,78 @@
+{% extends "authentication/home.html" %}
+
+  <!-- Page Content -->
+{% block body %}
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+        <h1 class="my-4">Django For Beginners
+        </h1>
+
+        <!-- Blog Post -->
+        {% for hotel in hotel_images %}
+
+        <div class="card mb-4">
+          <div class="card-body">
+            <h2 class="card-title">{{hotel.author}}</h2>
+              <h2 class="card-title">{{hotel.caption}}</h2>
+          </div>
+          <div class="card-footer text-muted">
+              <img src="{{ hotel.image.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" />
+            <center>
+              <table>
+                <tr>
+                  <td>
+                  <form action="/hot/{{ hotel.id }}/" method="POST">
+                    {% csrf_token %}
+                    <span>{{ hotel.hot.count }}<button type="submit"></a><i class="fa fa-thumbs-o-up" style="font-size:36px" aria-hidden="true"></i></button></span>&nbsp &nbsp
+                  </form>
+                  </td>
+                  <td>
+                  <form action="/n_not/{{ hotel.id }}/" method="POST">
+                    {% csrf_token %}
+                    <span>{{ hotel.n_not.count }}<button type="submit"></a><i class="fa fa-thumbs-o-down" style="font-size:36px"></i></button></span>
+                  </form>
+                  </td>
+                </tr>
+                <tr>
+                  <form action="/followers_count/{{ hotel.id }}/" method="POST">
+                    {% csrf_token %}
+                    <span>{{ hotel.follower.count }}<button type="submit"></a><i class="btn profile-edit-btn" style="font-size:26px">Follow</i></button></span>
+                  </form>
+                </tr>
+                <tr>
+                  <form action="/unfollowers_count/{{ hotel.id }}/" method="POST">
+                    {% csrf_token %}
+                    <span>{{ hotel.unfollower.count }}<button type="submit"></a><i class="btn profile-edit-btn" style="font-size:26px">unFollow</i></button></span>
+                  </form>
+                </tr>
+              </table>
+            </center>
+          </div>
+        </div>
+        {% endfor %}
+
+
+<!--        &lt;!&ndash; Pagination &ndash;&gt;-->
+<!--        <ul class="pagination justify-content-center mb-4">-->
+<!--          <li class="page-item">-->
+<!--            <a class="page-link" href="#">&larr; Older</a>-->
+<!--          </li>-->
+<!--          <li class="page-item disabled">-->
+<!--            <a class="page-link" href="#">Newer &rarr;</a>-->
+<!--          </li>-->
+<!--        </ul>-->
+
+      </div>
+
+
+  <!-- /.container -->
+
+{% endblock body %}
+
+
+
